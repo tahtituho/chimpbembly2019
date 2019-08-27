@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rootElement>
+<tracks rows="10000" startRow="0" endRow="10000" rowsPerBeat="8"
+beatsPerMin="125">
+	<track name="common:act" folded="0" muteKeyCount="0"
+color="ffb27474">
+		<key row="0" value="1.000000" interpolation="0" />
+		<key row="95" value="2.000000" interpolation="0" />
+		<key row="312" value="3.000000" interpolation="0" />
+	</track>
+	<track name="common:fade.x" folded="0" muteKeyCount="0"
+color="ff8850b2">
+		<key row="0" value="1.000000" interpolation="1" />
+		<key row="80" value="1.000000" interpolation="1" />
+		<key row="95" value="0.000000" interpolation="3" />
+		<key row="96" value="0.000000" interpolation="0" />
+		<key row="106" value="1.000000" interpolation="3" />
+		<key row="107" value="0.000000" interpolation="0" />
+		<key row="117" value="0.000000" interpolation="3" />
+		<key row="118" value="0.000000" interpolation="0" />
+		<key row="128" value="1.000000" interpolation="3" />
+		<key row="129" value="0.000000" interpolation="0" />
+		<key row="139" value="1.000000" interpolation="3" />
+		<key row="140" value="0.000000" interpolation="0" />
+		<key row="150" value="0.000000" interpolation="3" />
+		<key row="151" value="0.000000" interpolation="0" />
+		<key row="161" value="1.000000" interpolation="2" />
+		<key row="165" value="0.000000" interpolation="0" />
+		<key row="168" value="1.000000" interpolation="2" />
+		<key row="169" value="0.000000" interpolation="3" />
+		<key row="170" value="1.000000" interpolation="2" />
+		<key row="171" value="0.000000" interpolation="3" />
+		<key row="172" value="1.000000" interpolation="2" />
+		<key row="173" value="0.000000" interpolation="3" />
+		<key row="174" value="1.000000" interpolation="2" />
+		<key row="175" value="0.000000" interpolation="3" />
+		<key row="176" value="1.000000" interpolation="2" />
+		<key row="177" value="0.000000" interpolation="3" />
+		<key row="178" value="1.000000" interpolation="0" />
+		<key row="304" value="1.000000" interpolation="1" />
+		<key row="311" value="0.000000" interpolation="0" />
+		<key row="312" value="1.000000" interpolation="0" />
+	</track>
+	<track name="common:fade.y" folded="0" muteKeyCount="0"
+color="ffb25091">
+		<key row="0" value="1.000000" interpolation="1" />
+		<key row="80" value="1.000000" interpolation="1" />
+		<key row="95" value="0.000000" interpolation="3" />
+		<key row="96" value="0.000000" interpolation="0" />
+		<key row="106" value="0.000000" interpolation="3" />
+		<key row="107" value="0.000000" interpolation="0" />
+		<key row="117" value="1.000000" interpolation="3" />
+		<key row="118" value="0.000000" interpolation="0" />
+		<key row="128" value="0.000000" interpolation="3" />
+		<key row="129" value="0.000000" interpolation="0" />
+		<key row="139" value="1.000000" interpolation="3" />
+		<key row="140" value="0.000000" interpolation="0" />
+		<key row="150" value="1.000000" interpolation="3" />
+		<key row="151" value="0.000000" interpolation="0" />
+		<key row="161" value="1.000000" interpolation="2" />
+		<key row="165" value="0.000000" interpolation="0" />
+		<key row="172" value="1.000000" interpolation="2" />
+		<key row="173" value="0.000000" interpolation="3" />
+		<key row="174" value="1.000000" interpolation="2" />
+		<key row="175" value="0.000000" interpolation="3" />
+		<key row="176" value="1.000000" interpolation="2" />
+		<key row="177" value="0.000000" interpolation="3" />
+		<key row="178" value="1.000000" interpolation="0" />
+		<key row="280" value="1.000000" interpolation="1" />
+		<key row="311" value="0.000000" interpolation="0" />
+		<key row="312" value="1.000000" interpolation="0" />
+	</track>
+	<track name="common:fade.z" folded="0" muteKeyCount="0"
+color="ffb27474">
+		<key row="0" value="1.000000" interpolation="1" />
+		<key row="80" value="1.000000" interpolation="1" />
+		<key row="95" value="1.000000" interpolation="0" />
+		<key row="96" value="0.000000" interpolation="0" />
+		<key row="106" value="0.000000" interpolation="3" />
+		<key row="107" value="0.000000" interpolation="0" />
+		<key row="117" value="0.000000" interpolation="3" />
+		<key row="118" value="0.000000" interpolation="0" />
+		<key row="128" value="1.000000" interpolation="3" />
+		<key row="129" value="0.000000" interpolation="0" />
+		<key row="139" value="0.000000" interpolation="3" />
+		<key row="140" value="0.000000" interpolation="0" />
+		<key row="150" value="1.000000" interpolation="3" />
+		<key row="151" value="0.000000" interpolation="0" />
+		<key row="161" value="1.000000" interpolation="2" />
+		<key row="165" value="0.000000" interpolation="0" />
+		<key row="175" value="0.000000" interpolation="2" />
+		<key row="176" value="1.000000" interpolation="3" />
+		<key row="177" value="0.000000" interpolation="2" />
+		<key row="178" value="1.000000" interpolation="0" />
+		<key row="280" value="1.000000" interpolation="1" />
+		<key row="311" value="0.000000" interpolation="0" />
+		<key row="312" value="1.000000" interpolation="0" />
+	</track>
+	<track name="camera:position.x" folded="0" muteKeyCount="0"
+color="ffb28050">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="95" value="0.000000" interpolation="0" />
+		<key row="312" value="43.000000" interpolation="0" />
+	</track>
+	<track name="camera:position.y" folded="0" muteKeyCount="0"
+color="ffa9b250">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="95" value="0.000000" interpolation="0" />
+		<key row="312" value="22.950029" interpolation="0" />
+	</track>
+	<track name="camera:position.z" folded="0" muteKeyCount="0"
+color="ff60b250">
+		<key row="0" value="2.240001" interpolation="0" />
+		<key row="95" value="2.040001" interpolation="0" />
+		<key row="312" value="38.000000" interpolation="0" />
+	</track>
+	<track name="camera:lookat.x" folded="0" muteKeyCount="0"
+color="ff4fb292">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="312" value="0.000000" interpolation="0" />
+	</track>
+	<track name="camera:lookat.y" folded="0" muteKeyCount="0"
+color="ff4f71b2">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="312" value="0.000000" interpolation="0" />
+	</track>
+	<track name="camera:lookat.z" folded="0" muteKeyCount="0"
+color="ff8850b2">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="312" value="0.000000" interpolation="0" />
+	</track>
+	<track name="camera:fov" folded="0" muteKeyCount="0"
+color="ffb25091">
+		<key row="0" value="0.900000" interpolation="0" />
+		<key row="312" value="0.900000" interpolation="0" />
+	</track>
+	<track name="march:maxsteps" folded="0" muteKeyCount="0"
+color="ffb27474">
+		<key row="0" value="64.000000" interpolation="0" />
+		<key row="312" value="64.000000" interpolation="0" />
+	</track>
+	<track name="march:threshold" folded="0" muteKeyCount="0"
+color="ffb28050">
+		<key row="0" value="0.001000" interpolation="0" />
+	</track>
+	<track name="light:position.x" folded="0" muteKeyCount="0"
+color="ffa9b250">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="312" value="10.000000" interpolation="0" />
+	</track>
+	<track name="light:position.y" folded="0" muteKeyCount="0"
+color="ff60b250">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="312" value="5.000000" interpolation="0" />
+	</track>
+	<track name="light:position.z" folded="0" muteKeyCount="0"
+color="ff4fb292">
+		<key row="0" value="20.000000" interpolation="0" />
+		<key row="312" value="0.000000" interpolation="0" />
+	</track>
+	<track name="scene1:vector.x" folded="0" muteKeyCount="0"
+color="ff4f71b2">
+		<key row="0" value="0.000000" interpolation="1" />
+		<key row="94" value="20.000000" interpolation="0" />
+	</track>
+	<track name="scene1:vector.y" folded="0" muteKeyCount="0"
+color="ff8850b2">
+		<key row="0" value="0.000000" interpolation="3" />
+		<key row="94" value="15.000000" interpolation="0" />
+	</track>
+	<track name="scene1:vector.z" folded="0" muteKeyCount="0"
+color="ffb25091">
+		<key row="0" value="0.000000" interpolation="2" />
+		<key row="94" value="10.000000" interpolation="0" />
+	</track>
+	<track name="scene2:rotation.x" folded="0" muteKeyCount="0"
+color="ffb27474">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="95" value="0.000000" interpolation="0" />
+		<key row="246" value="0.000000" interpolation="0" />
+		<key row="265" value="0.000000" interpolation="2" />
+		<key row="312" value="0.500000" interpolation="2" />
+	</track>
+	<track name="scene2:rotation.y" folded="0" muteKeyCount="0"
+color="ffb28050">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="95" value="0.000000" interpolation="0" />
+		<key row="246" value="0.000000" interpolation="0" />
+		<key row="279" value="0.000000" interpolation="0" />
+	</track>
+	<track name="scene2:rotation.z" folded="0" muteKeyCount="0"
+color="ffa9b250">
+		<key row="0" value="0.110000" interpolation="0" />
+		<key row="95" value="-0.110000" interpolation="0" />
+		<key row="106" value="0.110000" interpolation="0" />
+		<key row="117" value="-0.110000" interpolation="0" />
+		<key row="128" value="0.110000" interpolation="0" />
+		<key row="139" value="-0.110000" interpolation="0" />
+		<key row="150" value="0.110000" interpolation="0" />
+		<key row="160" value="0.000000" interpolation="0" />
+		<key row="178" value="0.000000" interpolation="2" />
+		<key row="216" value="2.662362" interpolation="2" />
+		<key row="239" value="-0.970000" interpolation="2" />
+		<key row="279" value="2.630001" interpolation="2" />
+		<key row="312" value="3.030002" interpolation="0" />
+	</track>
+	<track name="scene2:position.x" folded="0" muteKeyCount="0"
+color="ff60b250">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="178" value="0.000000" interpolation="2" />
+		<key row="246" value="1.300000" interpolation="2" />
+		<key row="275" value="-0.618969" interpolation="2" />
+	</track>
+	<track name="scene2:position.y" folded="0" muteKeyCount="0"
+color="ff4fb292">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="184" value="0.000000" interpolation="2" />
+		<key row="208" value="7.000000" interpolation="2" />
+		<key row="246" value="-0.500000" interpolation="2" />
+		<key row="279" value="-5.500000" interpolation="0" />
+	</track>
+	<track name="scene2:position.z" folded="0" muteKeyCount="0"
+color="ff4f71b2">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="178" value="0.000000" interpolation="2" />
+		<key row="189" value="-2.500000" interpolation="0" />
+		<key row="207" value="-2.500000" interpolation="2" />
+		<key row="236" value="-0.200000" interpolation="2" />
+		<key row="279" value="-3.200000" interpolation="0" />
+	</track>
+	<track name="scene3:orbPosition.x" folded="0" muteKeyCount="0"
+color="ffb28050">
+		<key row="312" value="0.000000" interpolation="1" />
+		<key row="457" value="15.000000" interpolation="1" />
+	</track>
+	<track name="scene3:orbPosition.y" folded="0" muteKeyCount="0"
+color="ffa9b250">
+		<key row="312" value="10.000000" interpolation="0" />
+		<key row="457" value="15.000000" interpolation="1" />
+	</track>
+	<track name="scene3:orbPosition.z" folded="0" muteKeyCount="0"
+color="ff60b250">
+		<key row="312" value="0.000000" interpolation="1" />
+		<key row="457" value="15.000000" interpolation="1" />
+	</track>
+	<track name=".x" folded="0" muteKeyCount="0" color="ff4fb292" />
+	<track name=".y" folded="0" muteKeyCount="0" color="ff4f71b2" />
+	<track name=".z" folded="0" muteKeyCount="0" color="ff8850b2" />
+</tracks>
+	</rootElement>

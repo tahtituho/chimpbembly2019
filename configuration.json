@@ -1,0 +1,126 @@
+{
+    "demo": {
+        "name": "chimpbembly 2019",
+        "group": "tähtituho",
+        "release": false,
+        "log": true
+    },
+    "screen": {
+        "width": 1280,
+        "height": 960,
+        "FPS": 80
+    },
+    "music": {
+        "file": "assets\\music\\tune.mp3",
+        "BPM": 70.0,
+		"frequency": 44000
+    },
+	"sync": {
+        "RPB": 8,
+        "host": "localhost"
+    },
+    "shaders": {
+        "vertex": "assets\\shaders\\vertex.vert",
+        "fragment": "assets\\shaders\\fragment.frag",
+        "majorVersion": 3,
+        "minorVersion": 3
+    },
+	 "assets": [
+        {
+            "type": "texture",
+            "name": "nuclearChaos",
+            "file": "assets\\textures\\nuclear_chaos.png"
+        },
+        {
+            "type": "texture",
+            "name": "bogdan",
+            "file": "assets\\textures\\bogdan.png"
+        }
+    ],
+    "tracks": [
+        {
+            "type": "float1",
+            "name": {
+                "track": "common:act",
+                "variable": "act"
+            }
+        },
+        {
+            "type": "float3",
+            "name": {
+                "track": "common:fade",
+                "variable": "fade"
+            }
+        },
+        {
+            "type": "float3",
+            "name": {
+                "track": "camera:position",
+                "variable": "cameraPosition"
+            }
+        },
+        {
+            "type": "float3",
+            "name": {
+                "track": "camera:lookat",
+                "variable": "cameraLookAt"
+            }
+        },
+        {
+            "type": "float1",
+            "name": {
+                "track": "camera:fov",
+                "variable": "cameraFov"
+            }
+        },
+        {
+            "type": "float1",
+            "name": {
+                "track": "march:maxsteps",
+                "variable": "rayMaxSteps"
+            }
+        },
+        {
+            "type": "float1",
+            "name": {
+                "track": "march:threshold",
+                "variable": "rayThreshold"
+            }
+        },
+        {
+            "type": "float3",
+            "name": {
+                "track": "light:position",
+                "variable": "lightPosition"
+            }
+        },
+        {
+            "type": "float3",
+            "name": {
+                "track": "scene1:vector",
+                "variable": "scene1Vector"
+            }
+        },
+        {
+            "type": "float3",
+            "name": {
+                "track": "scene2:rotation",
+                "variable": "scene2Rotation"
+            }
+        },
+        {
+            "type": "float3",
+            "name": {
+                "track": "scene2:position",
+                "variable": "scene2Position"
+            }
+        },
+        {
+            "type": "float3",
+            "name": {
+                "track": "scene3:orbPosition",
+                "variable": "scene3OrbPosition"
+            }
+        }
+    ]
+}
