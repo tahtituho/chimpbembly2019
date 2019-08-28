@@ -23,6 +23,8 @@ uniform vec3 scene2Position;
 
 uniform vec3 scene3OrbPosition;
 
+uniform vec3 scene4SpineDensity;
+
 uniform sampler2D nuclearChaos;
 uniform sampler2D bogdan;
 
@@ -31,6 +33,11 @@ in float[12] coses;
 in float random;
 
 #define PI 3.14159265359
+
+struct vec2Tuple {
+    vec2 first;
+    vec2 second;
+};
 
 struct vec3Tuple {
     vec3 first;
@@ -438,6 +445,21 @@ vec3Tuple repeat(vec3 p, vec3 size) {
     return vec3Tuple(path1, c);
 }
 
+vec2Tuple repeatPolar(vec2 p, float repetitions) {
+	float angle = 2 * PI / repetitions;
+	float a = atan(p.y, p.x) + angle / 2.0;
+	float r = length(p);
+	float c = floor(a / angle);
+	a = mod(a, angle) - angle / 2.0;
+	vec2 path = vec2(cos(a), sin(a)) * r;
+	// For an odd number of repetitions, fix cell index of the cell in -x direction
+	// (cell index would be e.g. -5 and 5 in the two halves of the cell):
+	if (abs(c) >= (repetitions / 2.0)) {
+        c = abs(c);
+    } 
+	return vec2Tuple(path, vec2(c));
+}
+
 entity opUnion(entity m1, entity m2) {
     return m1.dist < m2.dist ? m1 : m2;
 }
@@ -724,8 +746,8 @@ entity scene(vec3 path)
                 false
             )
         );
-        float a = floor(distance(path.xz, scene3OrbPosition.xz));
-        float b = smoothstep(-5.0, 5.0,  a) * 5;
+        float a = distance(path.xz, scene3OrbPosition.xz);
+        float b = smoothstep(5.0, 25.0, a);
         entity terrain = mTerrain(
             path,
             vec3(sin(time), b, 0.5),
@@ -736,18 +758,18 @@ entity scene(vec3 path)
     }
     else if(a == 4) {
          material roM = material(
-            vec3(0.5, 0.0, 0.0),
+            vec3(0, 0.42, 0.22),
             1.0,
 
-            vec3(0.5, 0.0, 0.0),
+            vec3(0, 0.42, 0.22),
             1.2,
 
             vec3(1.0, 1.0, 1.0),
-            10.0,
-            5.2,
+            50.0,
+            150.2,
 
             1.0,
-            false,
+            true,
             textureOptions(
                 1,
                 vec3(1.0),
@@ -757,18 +779,18 @@ entity scene(vec3 path)
         );
 
         material toM = material(
-            vec3(0.6, 0.6, 0.6),
+            vec3(0.063, 0.094, 0.125),
             1.0,
 
-            vec3(0.6, 0.6, 0.6),
+            vec3(0.063, 0.094, 0.125),
             0.2,
 
             vec3(1.0, 1.0, 1.0),
-            10.0,
-            30.2,
+            50.0,
+            100.2,
 
             1.0,
-            false,
+            true,
             textureOptions(
                 0,
                 vec3(3.5),
@@ -776,10 +798,13 @@ entity scene(vec3 path)
                 false
             )
         );
-
-        vec3 crossPoint = rotX(rotZ(path, time / 2.0), time);
+       
+        vec3Tuple crossPoints = repeat(rot(path, vec3(time / 2.5, time / 2.2, time / 3.4)), scene4SpineDensity);
+        vec3 cell = crossPoints.second;
+        vec3 crossPoint = crossPoints.first;
+        
         entity roto = mCross(
-            crossPoint,
+            rotX(crossPoint, (cell.y + cell.x + cell.z) * time),
             vec3(7.5, 7.5, 7.5),
             vec3(0.5, 0.5, 0.5),
             1.0,
@@ -791,7 +816,7 @@ entity scene(vec3 path)
 
         entity impaler = mCross(
             crossPoint,
-            vec3(150.0, 150.0, 150.0),
+            vec3(150.0, 0.0, 0.0),
             vec3(0.25, 0.25, 0.25),
             0.6,
             0.0,
@@ -799,7 +824,49 @@ entity scene(vec3 path)
         );
 
         impaler.needNormals = true;
-        return opUnion(roto, impaler);
+        entity rotoImpaler = opUnion(roto, impaler);
+
+        return rotoImpaler;
+    }
+    else if(a == 5) {
+         material tunnelMat = material(
+            vec3(0.8, 0, 1),
+            1.0,
+
+            vec3(0.8, 0, 1),
+            1.2,
+
+            vec3(1.0, 1.0, 1.0),
+            5.0,
+            15.2,
+
+            1.0,
+            true,
+            textureOptions(
+                1,
+                vec3(1.0),
+                vec3(1.0),
+                false
+            )
+        );
+
+        
+        vec3 rPath = rotY(rotZ(path, time / 1.5), time / 2.5);
+        vec2Tuple points = repeatPolar(rPath.xy, 15.0);
+        vec2 cell = points.second;
+        vec3 point = vec3(points.first, rPath.z);
+        point -= vec3(20.0, 0.0, 0.0);
+        vec3 final = rotX(rotY(point, 0.2), 0.4);
+        entity tunnel = mBox(
+            final,
+            vec3(3.0),
+            0.5,
+            tunnelMat
+        );
+
+        tunnel.needNormals = true;
+        
+        return tunnel;
     }
 } 
 
@@ -988,11 +1055,11 @@ vec3 calculateNormal(in vec3 n, in entity e) {
 vec3 calculateLights(in vec3 normal, in vec3 eye, in vec3 lp, in vec3 origin, entity entity) {
     vec3 lights = vec3(0.0);
     vec3 ambient = ambient(entity.material.ambient, entity.material.ambientStrength);
-    vec3 diffuse = diffuse(normal, entity.point, lp, entity.material.diffuse, entity.material.diffuseStrength);
-    vec3 specular = specular(normal, eye, entity.point, lp, entity.material.specular, entity.material.specularStrength, entity.material.shininess);
+    vec3 diffuse = diffuse(normal, origin, lp, entity.material.diffuse, entity.material.diffuseStrength);
+    vec3 specular = specular(normal, eye, origin, lp, entity.material.specular, entity.material.specularStrength, entity.material.shininess);
     float shadow = 1.0;
     if(entity.material.receiveShadows == true) {
-        shadow = shadows(origin, normalize(lp - origin), 0.4, 2.5, entity.material.shadowHardness);
+        shadow = shadows(origin, normalize(lp - origin), 1.5, 5.5, entity.material.shadowHardness);
     }
 
     lights += ambient;

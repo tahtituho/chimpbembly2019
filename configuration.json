@@ -121,6 +121,13 @@
                 "track": "scene3:orbPosition",
                 "variable": "scene3OrbPosition"
             }
+        },
+        {
+            "type": "float3",
+            "name": {
+                "track": "scene4:spineDensity",
+                "variable": "scene4SpineDensity"
+            }
         }
     ]
 }
