@@ -605,13 +605,29 @@ entity mFractal(vec3 path, int iter, float s, float o, material material) {
     return m;
 }
 
+entity mSierpinski(vec3 path, int iter, float s, float o, vec3 dist, vec3 rotation, float size,  material material) {
+    entity m;
+    vec3 p1 = path;
+    float scale = s;
+    float offset = o;
+    for(int i = 1; i <= iter; i++) {
+        p1 = sierpinskiFold(p1);
+        p1 = translate(p1, dist);
+        p1 = rot(p1, rotation);
+        p1 *= scale - offset * (scale - 1.0);
+       
+    }
+    m = mBox(p1, vec3(size), 0.5, material);
+    m.point = p1;
+    return m;
+}
 
 entity mCubesYAxis(vec3 path, material material) {
     entity m;
     vec3Tuple p1 = repeat(path, vec3(2.0, 2.0, 0.0));
     //p1 = path;
     m = mBox(rotZ(p1.first, 1.5708), vec3(1.0, 1.0, 1.0), 0.0, material);
-
+  
     return m;
 }
 
@@ -852,8 +868,7 @@ entity scene(vec3 path)
             )
         );
 
-        
-        vec3 rPath = rotY(rotZ(path, time / 1.5), time / 2.5);
+        vec3 rPath = translate(rotZ(rotY(rotX(path, 0.6), -0.2), time / 1.5), vec3(0.0, 0.0, 2.0));
         vec2Tuple points = repeatPolar(rPath.xy, 15.0);
         vec2 cell = points.second;
         vec3 point = vec3(points.first, rPath.z);
@@ -868,8 +883,32 @@ entity scene(vec3 path)
         );
 
         tunnel.needNormals = true;
-        
-        return tunnel;
+
+        material centreMat = material(
+            vec3(0.467, 1.0, 0.0),
+            1.2,
+
+            vec3(0.467, 1.0, 0.0),
+            1.2,
+
+            vec3(1.0, 1.0, 1.0),
+            1.0,
+            100.2,
+
+            1.0,
+            true,
+            textureOptions(
+                1,
+                vec3(1.0),
+                vec3(1.0),
+                false
+            )
+        );
+
+        entity centre = mSierpinski(rotY(path, -time / 2.0), 6, 1.0, 1.0, vec3(1.5), vec3(time / 21, time / 15, time / 290), 1.0, centreMat);
+        centre.needNormals = true;
+        return opUnion(centre, tunnel);
+
     }
 } 
 
