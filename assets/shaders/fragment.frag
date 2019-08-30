@@ -801,12 +801,12 @@ entity scene(vec3 path)
             )
         );
        
-        vec3Tuple crossPoints = repeat(rot(path, vec3(time / 2.5, time / 2.2, time / 3.4)), scene4SpineDensity);
+        vec3Tuple crossPoints = repeat(rot(path, vec3(time / 2.5, time / 2.2, time / 3.4)), vec3(35.0));
         vec3 cell = crossPoints.second;
         vec3 crossPoint = crossPoints.first;
         
         entity roto = mCross(
-            rotX(crossPoint, (cell.y + cell.x + cell.z) * time),
+            crossPoint,
             vec3(7.5, 7.5, 7.5),
             vec3(0.5, 0.5, 0.5),
             1.0,
