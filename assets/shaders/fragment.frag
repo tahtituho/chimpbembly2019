@@ -25,6 +25,8 @@ uniform vec3 scene3OrbPosition;
 
 uniform vec3 scene4SpineDensity;
 
+uniform float scene5Impulse; 
+
 uniform sampler2D nuclearChaos;
 uniform sampler2D bogdan;
 
@@ -830,14 +832,14 @@ entity scene(vec3 path)
     }
     else if(a == 5) {
          material tunnelMat = material(
-            vec3(0.8, 0, 1),
-            1.0,
+            vec3(0.8, 0.0, 1),
+            0.2,
 
-            vec3(0.8, 0, 1),
+            vec3(0.8, 0.0, 1),
             1.2,
 
             vec3(1.0, 1.0, 1.0),
-            5.0,
+            1.0,
             15.2,
 
             1.0,
@@ -855,11 +857,12 @@ entity scene(vec3 path)
         vec2Tuple points = repeatPolar(rPath.xy, 15.0);
         vec2 cell = points.second;
         vec3 point = vec3(points.first, rPath.z);
-        point -= vec3(20.0, 0.0, 0.0);
+        
+        point -= vec3(20.0 + (impulse(scene5Impulse, 10.0) * 7.0), 0.0, 0.0);
         vec3 final = rotX(rotY(point, 0.2), 0.4);
         entity tunnel = mBox(
             final,
-            vec3(3.0),
+            vec3(3.0 + impulse(scene5Impulse, 10.0) * 8.0),
             0.5,
             tunnelMat
         );

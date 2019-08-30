@@ -41,6 +41,9 @@ color="ff8850b2">
 		<key row="304" value="1.000000" interpolation="1" />
 		<key row="311" value="0.000000" interpolation="0" />
 		<key row="312" value="1.000000" interpolation="0" />
+		<key row="626" value="1.000000" interpolation="1" />
+		<key row="650" value="0.000000" interpolation="0" />
+		<key row="651" value="1.000000" interpolation="0" />
 	</track>
 	<track name="common:fade.y" folded="0" muteKeyCount="0"
 color="ffb25091">
@@ -70,6 +73,9 @@ color="ffb25091">
 		<key row="280" value="1.000000" interpolation="1" />
 		<key row="311" value="0.000000" interpolation="0" />
 		<key row="312" value="1.000000" interpolation="0" />
+		<key row="626" value="1.000000" interpolation="1" />
+		<key row="650" value="0.000000" interpolation="0" />
+		<key row="651" value="1.000000" interpolation="0" />
 	</track>
 	<track name="common:fade.z" folded="0" muteKeyCount="0"
 color="ffb27474">
@@ -96,6 +102,9 @@ color="ffb27474">
 		<key row="280" value="1.000000" interpolation="1" />
 		<key row="311" value="0.000000" interpolation="0" />
 		<key row="312" value="1.000000" interpolation="0" />
+		<key row="626" value="1.000000" interpolation="1" />
+		<key row="650" value="0.000000" interpolation="0" />
+		<key row="651" value="1.000000" interpolation="0" />
 	</track>
 	<track name="camera:position.x" folded="0" muteKeyCount="0"
 color="ffb28050">
@@ -116,7 +125,8 @@ color="ff60b250">
 		<key row="0" value="2.240001" interpolation="0" />
 		<key row="95" value="1.980000" interpolation="0" />
 		<key row="312" value="7.110001" interpolation="0" />
-		<key row="650" value="20.000000" interpolation="0" />
+		<key row="650" value="0.000000" interpolation="2" />
+		<key row="694" value="30.000000" interpolation="0" />
 	</track>
 	<track name="camera:lookat.x" folded="0" muteKeyCount="0"
 color="ff4fb292">
@@ -154,16 +164,19 @@ color="ffb28050">
 color="ffa9b250">
 		<key row="0" value="0.000000" interpolation="0" />
 		<key row="312" value="20.000000" interpolation="0" />
+		<key row="650" value="0.000000" interpolation="0" />
 	</track>
 	<track name="light:position.y" folded="0" muteKeyCount="0"
 color="ff60b250">
 		<key row="0" value="0.000000" interpolation="0" />
 		<key row="312" value="-5.000000" interpolation="0" />
+		<key row="650" value="0.000000" interpolation="0" />
 	</track>
 	<track name="light:position.z" folded="0" muteKeyCount="0"
 color="ff4fb292">
 		<key row="0" value="20.000000" interpolation="0" />
 		<key row="312" value="20.000000" interpolation="0" />
+		<key row="650" value="30.000000" interpolation="0" />
 	</track>
 	<track name="scene1:vector.x" folded="0" muteKeyCount="0"
 color="ff4f71b2">
@@ -265,6 +278,29 @@ color="ffb27474">
 color="ffb28050">
 		<key row="312" value="600.000000" interpolation="1" />
 		<key row="380" value="35.000000" interpolation="0" />
+	</track>
+	<track name="scene5:impulse" folded="0" muteKeyCount="0"
+color="ffb25091">
+		<key row="659" value="0.000000" interpolation="1" />
+		<key row="668" value="1.000000" interpolation="0" />
+		<key row="692" value="0.000000" interpolation="1" />
+		<key row="701" value="1.000000" interpolation="0" />
+		<key row="727" value="0.000000" interpolation="1" />
+		<key row="736" value="1.000000" interpolation="0" />
+		<key row="759" value="0.000000" interpolation="1" />
+		<key row="768" value="1.000000" interpolation="0" />
+		<key row="793" value="0.000000" interpolation="1" />
+		<key row="802" value="1.000000" interpolation="0" />
+		<key row="827" value="0.000000" interpolation="1" />
+		<key row="836" value="1.000000" interpolation="0" />
+		<key row="861" value="0.000000" interpolation="1" />
+		<key row="870" value="1.000000" interpolation="0" />
+		<key row="894" value="0.000000" interpolation="1" />
+		<key row="903" value="1.000000" interpolation="0" />
+		<key row="927" value="0.000000" interpolation="1" />
+		<key row="936" value="1.000000" interpolation="0" />
+		<key row="963" value="0.000000" interpolation="1" />
+		<key row="972" value="1.000000" interpolation="0" />
 	</track>
 </tracks>
 	</rootElement>
