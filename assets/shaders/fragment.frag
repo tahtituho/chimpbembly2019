@@ -253,9 +253,10 @@ float opRound(float p, float rad)
 
 //Distance functions to creat primitives to 3D world
 //Source http://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm
-float sdPlane(vec3 p1, vec4 n)
+float sdPlane(vec3 p, vec3 pos, vec4 n)
 {
-    // n must be normalized
+  // n must be normalized
+    vec3 p1 = vec3(p) + pos;
     return dot(p1, n.xyz) + n.w;
 }
 
@@ -540,6 +541,16 @@ entity mCross(vec3 path, vec3 l, vec3 t, float r, float s, material material) {
     return m;
 }
 
+entity mPlane(vec3 p, vec3 pos, vec4 n, material material)
+{
+    entity m;
+    vec3 p1 = p;
+    m.dist = sdPlane(p, pos, n);
+    m.point = p1;
+    m.material = material;
+    return m;
+}
+
 entity mSphere(vec3 path, float radius, material material) {
     entity m;
     vec3 p1 = path;
@@ -631,12 +642,12 @@ entity mCubesYAxis(vec3 path, material material) {
     return m;
 }
 
-entity mTorusFractal(vec3 path, int iter, float scale, float offset, material material) {
+entity mTorusFractal(vec3 path, int iter, float scale, float offset, material material, float movementsize, float movementspeed) {
     entity m;
     vec3 p1 = path;
     for(int i = 1; i <= iter; i++) {
 
-        p1 = boxFold(opTwist(p1, 0.02), vec3(sin(time) + 0.5 * 4.0));
+        p1 = boxFold(opTwist(p1, 0.02), vec3((movementsize * sin(time*movementspeed)) + 0.5 * 4.0));
         //p1 = sphereFold(p1, 1.6, 1.9);
         //p1 = randomFold(p1, vec3(0.0, 0.0, 1.0));
         p1 = rotY(rotX(rotZ(p1, i * 0.7), i *  0.5), i * 1.2);
@@ -913,6 +924,69 @@ entity scene(vec3 path)
         centre.needNormals = true;
         return opUnion(centre, tunnel);
 
+    }
+    else if (a == 10) {
+        vec3 planecolor;
+        vec3 wallcolor;
+        
+        if(fract(path.x + floor(path.y*1000.0) * 0.5 + floor(path.z*1000.0) * 0.5) < 0.5)
+        {
+            planecolor = vec3(1.0, sin(time*10.5)*0.9, 0.0);
+        }
+        else {
+            planecolor = vec3(0.0, 0.0, 0.0);
+        }
+        if(fract(path.x) < 0.2 || fract(path.z + path.y) > 0.8)
+        {   
+            wallcolor = vec3(0.0, 0.0, 1.0);
+        }
+        else {
+            wallcolor = vec3(0.0, 0.0, 0.0);
+        }
+        material bluemat = material(
+            wallcolor,
+            1.0,
+            vec3(0.5, 0.5, 0.5),
+            1.3,
+            vec3(0.0, 0.0, 0.5),
+            10.0,
+            0.4,
+            1.0, 
+            true,
+            textureOptions(
+                1,
+                vec3(1.0),
+                vec3(1.0),
+                false
+            )
+        );
+        material planemat = material(
+            planecolor,
+            1.0,
+            vec3(0.5, 0.5, 0.5),
+            1.3,
+            vec3(0.0, 0.0, 0.5),
+            10.0,
+            0.4,
+            1.0, 
+            true,
+            textureOptions(
+                0,
+                vec3(0.0),
+                vec3(0.0),
+                false
+            )
+        );
+        entity box = mBox(path, vec3(0.1, 800.0, 800.0), 0.0, planemat);
+        entity planebottom = mPlane(path, vec3(0.0, -20.0, 0.0), normalize(vec4(1.0, 0.0, 0.0, 0.0)), planemat);
+        entity terrain = mTerrain(path, vec3(100.0, 20.0, 1.0), planemat);
+        entity torusf = mTorusFractal(path, 3, 1.0, 0.0, planemat, 5, 3);
+        entity hugebox = mBox(path, vec3(999999999.0, 999999999.0, 999999.0), 0.0, bluemat);
+        entity roombox = mBox(path, vec3(150.0, 150.0, 150.0), 0.0, bluemat);
+        roombox.needNormals = true;
+        hugebox.needNormals = true;
+        entity stuff = opUnion(torusf, terrain);
+        return opUnion(opSubtraction(roombox, hugebox), stuff);
     }
 } 
 
