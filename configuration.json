@@ -28,8 +28,8 @@
 	 "assets": [
         {
             "type": "texture",
-            "name": "nuclearChaos",
-            "file": "assets\\textures\\nuclear_chaos.png"
+            "name": "nokilonkka",
+            "file": "assets\\textures\\nokilonkka.png"
         },
         {
             "type": "texture",

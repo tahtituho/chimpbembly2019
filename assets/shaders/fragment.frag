@@ -27,7 +27,7 @@ uniform vec3 scene4SpineDensity;
 
 uniform float scene5Impulse; 
 
-uniform sampler2D nuclearChaos;
+uniform sampler2D nokilonkka;
 uniform sampler2D bogdan;
 
 in float[12] sines;
@@ -816,10 +816,14 @@ entity scene(vec3 path)
                 false
             )
         );
-       
+        /*
         vec3Tuple crossPoints = repeat(rot(path, vec3(time / 2.5, time / 2.2, time / 3.4)), vec3(35.0));
         vec3 cell = crossPoints.second;
         vec3 crossPoint = crossPoints.first;
+        */
+        //vec3Tuple crossPoints = repeat(rot(path, vec3(time / 2.5, time / 2.2, time / 3.4)), vec3(35.0));
+        vec3 cell = vec3(1.0);
+        vec3 crossPoint = rotZ(rotY(path, 0.2), 0.8);
         
         entity roto = mCross(
             crossPoint,
@@ -1063,7 +1067,7 @@ vec3 generateTexture(int index, vec3 point, vec3 offset, vec3 scale) {
         }
         case 2: {
             vec3 rp = vec3((point.x / scale.x) + offset.x, (point.y / scale.y) + offset.y, (point.z / scale.z) + offset.z);
-            r = textureCube(nuclearChaos, rp, vec3(0.0, 0.0, 0.1)).xyz;
+            r = textureCube(nokilonkka, rp, vec3(0.0, 0.0, 0.1)).xyz;
             break;
         }
         case 3: {
