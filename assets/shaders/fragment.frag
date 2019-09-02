@@ -929,7 +929,7 @@ entity scene(vec3 path)
         vec3 planecolor;
         vec3 wallcolor;
         
-        if(fract(path.x + floor(path.y*1000.0) * 0.5 + floor(path.z*1000.0) * 0.5) < 0.5)
+        if(fract(path.x + floor(path.y*90.0) * 0.5 + floor(path.z*90.0) * 0.5) < 0.5)
         {
             planecolor = vec3(1.0, sin(time*10.5)*0.9, 0.0);
         }
