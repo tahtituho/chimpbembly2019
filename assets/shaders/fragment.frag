@@ -698,8 +698,7 @@ entity scene(vec3 path)
     if(a == 1) {
         vec2 uv = (gl_FragCoord.xy / resolution.xy) * 2.0 - 1.0;
         //vec3 rPath = rotY(rotX(path, sin(uv.x + scene1Vector.x)), cos(uv.y + scene1Vector.y));
-        vec3 rPath = rot(path, vec3(time));
-        rPath = rotY(rotX(path, sin(uv.x + scene1Vector.x)), cos(uv.y + scene1Vector.y));
+        vec3 rPath = rotY(rotX(path, uv.x + scene1Vector.x), uv.y + scene1Vector.y);
         material skullMat = material(
             vec3(0.6, 0.6, 0.6),
             1.0,
@@ -712,7 +711,7 @@ entity scene(vec3 path)
             5.2,
 
             1.3,
-            true,
+            false,
             textureOptions(
                 3,
                 vec3(1.5, 1.5, 1.5),
@@ -722,7 +721,6 @@ entity scene(vec3 path)
         );
 
         entity skull = mBox(rPath, vec3(1.0), 0.0, skullMat);
-        //entity skull = mSphere(path, 1.0, skullMat);
         skull.needNormals = true;
         return skull;
     }
