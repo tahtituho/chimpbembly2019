@@ -23,9 +23,10 @@ uniform vec3 scene2Position;
 
 uniform vec3 scene3OrbPosition;
 
-uniform vec3 scene4SpineDensity;
+uniform vec3 scene4Rotation;
 
 uniform float scene5Impulse; 
+uniform vec3 scene5Cabbage; 
 
 uniform sampler2D nokilonkka;
 uniform sampler2D bogdan;
@@ -793,7 +794,7 @@ entity scene(vec3 path)
 
             vec3(1.0, 1.0, 1.0),
             50.0,
-            150.2,
+            80.2,
 
             1.0,
             true,
@@ -813,8 +814,8 @@ entity scene(vec3 path)
             0.2,
 
             vec3(1.0, 1.0, 1.0),
-            50.0,
-            100.2,
+            20.0,
+            10.2,
 
             1.0,
             true,
@@ -825,14 +826,7 @@ entity scene(vec3 path)
                 false
             )
         );
-        /*
-        vec3Tuple crossPoints = repeat(rot(path, vec3(time / 2.5, time / 2.2, time / 3.4)), vec3(35.0));
-        vec3 cell = crossPoints.second;
-        vec3 crossPoint = crossPoints.first;
-        */
-        //vec3Tuple crossPoints = repeat(rot(path, vec3(time / 2.5, time / 2.2, time / 3.4)), vec3(35.0));
-        vec3 cell = vec3(1.0);
-        vec3 crossPoint = rotZ(rotY(path, 0.2), 0.8);
+        vec3 crossPoint = rot(path, scene4Rotation);
         
         entity roto = mCross(
             crossPoint,
@@ -847,7 +841,7 @@ entity scene(vec3 path)
 
         entity impaler = mCross(
             crossPoint,
-            vec3(150.0, 0.0, 0.0),
+            vec3(150.0, 150.0, 150.0),
             vec3(0.25, 0.25, 0.25),
             0.6,
             0.0,
@@ -918,7 +912,7 @@ entity scene(vec3 path)
             )
         );
 
-        entity centre = mSierpinski(rotY(path, -time / 2.0), 6, 1.0, 1.0, vec3(1.5), vec3(time / 21, time / 15, time / 290), 1.0, centreMat);
+        entity centre = mSierpinski(rotY(path, -time / 2.0), 6, 1.0, 1.0, vec3(1.5), scene5Cabbage, 1.0, centreMat);
         centre.needNormals = true;
         return opUnion(centre, tunnel);
 
