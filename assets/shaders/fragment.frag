@@ -1102,7 +1102,7 @@ vec4 background(vec2 uv) {
     vec4 r = vec4(0.0);
     if(a == 1) {
         r.xyz = mix(vec3(1.0, 0.0, 0.0), vec3(0.0, 1.0, 0.0), sin(time));
-        r.w = 1.0;
+        r.w = scene1Vector.z;
     }
     else if(a == 2) {
         r.xyz = mix(vec3(0.2, 0.2, 0.2), vec3(0.8, 0.8, 1.0), 0.1);

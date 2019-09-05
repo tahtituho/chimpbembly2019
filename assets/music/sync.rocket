@@ -152,7 +152,7 @@ color="ffb28050">
 		<key row="1029" value="-1.000000" interpolation="0" />
 		<key row="1034" value="-1.000000" interpolation="1" />
 		<key row="1047" value="0.000000" interpolation="0" />
-		<key row="1095" value="2.000000" interpolation="0" />
+		<key row="1095" value="0.000000" interpolation="1" />
 		<key row="1119" value="2.000000" interpolation="0" />
 		<key row="1137" value="2.000000" interpolation="1" />
 		<key row="1167" value="-2.000000" interpolation="2" />
@@ -184,10 +184,9 @@ color="ffa9b250">
 		<key row="1029" value="1.000000" interpolation="0" />
 		<key row="1034" value="1.000000" interpolation="1" />
 		<key row="1047" value="0.000000" interpolation="0" />
-		<key row="1095" value="2.000000" interpolation="2" />
+		<key row="1095" value="0.000000" interpolation="1" />
 		<key row="1119" value="-2.000000" interpolation="0" />
 		<key row="1143" value="-2.000000" interpolation="0" />
-		<key row="1164" value="-2.000000" interpolation="2" />
 		<key row="1376" value="0.000000" interpolation="0" />
 	</track>
 	<track name="camera:position.z" folded="0" muteKeyCount="0"
@@ -215,7 +214,7 @@ color="ff60b250">
 		<key row="1034" value="1.500000" interpolation="1" />
 		<key row="1047" value="3.000000" interpolation="0" />
 		<key row="1062" value="2.000000" interpolation="0" />
-		<key row="1095" value="1.000000" interpolation="3" />
+		<key row="1095" value="2.000000" interpolation="2" />
 		<key row="1119" value="-1.000000" interpolation="1" />
 		<key row="1143" value="1.000000" interpolation="2" />
 		<key row="1167" value="-1.000000" interpolation="1" />
@@ -326,7 +325,8 @@ color="ff4f71b2">
 		<key row="1034" value="5.000000" interpolation="1" />
 		<key row="1062" value="-5.000000" interpolation="0" />
 		<key row="1067" value="-5.000000" interpolation="1" />
-		<key row="1095" value="1.000000" interpolation="2" />
+		<key row="1095" value="1.000000" interpolation="0" />
+		<key row="1101" value="1.000000" interpolation="2" />
 		<key row="1375" value="20.000000" interpolation="0" />
 	</track>
 	<track name="scene1:vector.y" folded="0" muteKeyCount="0"
@@ -340,13 +340,24 @@ color="ff8850b2">
 		<key row="1034" value="5.000000" interpolation="3" />
 		<key row="1062" value="-5.000000" interpolation="0" />
 		<key row="1067" value="-5.000000" interpolation="1" />
-		<key row="1095" value="1.000000" interpolation="1" />
+		<key row="1095" value="1.000000" interpolation="0" />
+		<key row="1101" value="1.000000" interpolation="2" />
 		<key row="1375" value="35.000000" interpolation="0" />
 	</track>
 	<track name="scene1:vector.z" folded="0" muteKeyCount="0"
 color="ffb25091">
 		<key row="0" value="0.000000" interpolation="0" />
-		<key row="985" value="0.000000" interpolation="0" />
+		<key row="985" value="100.000000" interpolation="0" />
+		<key row="995" value="0.000000" interpolation="3" />
+		<key row="1007" value="100.000000" interpolation="0" />
+		<key row="1029" value="0.000000" interpolation="3" />
+		<key row="1037" value="100.000000" interpolation="0" />
+		<key row="1062" value="0.000000" interpolation="2" />
+		<key row="1070" value="100.000000" interpolation="0" />
+		<key row="1095" value="0.000000" interpolation="3" />
+		<key row="1104" value="100.000000" interpolation="1" />
+		<key row="1105" value="5.000000" interpolation="2" />
+		<key row="1312" value="0.000000" interpolation="0" />
 	</track>
 	<track name="scene2:rotation.x" folded="0" muteKeyCount="0"
 color="ffb27474">
@@ -418,88 +429,6 @@ color="ffa9b250">
 	<track name="scene3:orbPosition.z" folded="0" muteKeyCount="0"
 color="ff60b250">
 		<key row="312" value="0.000000" interpolation="0" />
-	</track>
-	<track name="scene4:spineDensity.x" folded="0" muteKeyCount="0"
-color="ffb25091">
-		<key row="0" value="0.000000" interpolation="0" />
-		<key row="312" value="600.000000" interpolation="1" />
-		<key row="380" value="35.000000" interpolation="0" />
-	</track>
-	<track name="scene4:spineDensity.y" folded="0" muteKeyCount="0"
-color="ffb27474">
-		<key row="0" value="0.000000" interpolation="0" />
-		<key row="312" value="600.000000" interpolation="1" />
-		<key row="380" value="35.000000" interpolation="0" />
-	</track>
-	<track name="scene4:spineDensity.z" folded="0" muteKeyCount="0"
-color="ffb28050">
-		<key row="0" value="0.000000" interpolation="0" />
-		<key row="312" value="600.000000" interpolation="1" />
-		<key row="380" value="35.000000" interpolation="0" />
-	</track>
-	<track name="scene5:impulse" folded="0" muteKeyCount="0"
-color="ffb25091">
-		<key row="659" value="0.000000" interpolation="1" />
-		<key row="668" value="1.000000" interpolation="0" />
-		<key row="692" value="0.000000" interpolation="1" />
-		<key row="701" value="1.000000" interpolation="0" />
-		<key row="727" value="0.000000" interpolation="1" />
-		<key row="736" value="1.000000" interpolation="0" />
-		<key row="759" value="0.000000" interpolation="1" />
-		<key row="768" value="1.000000" interpolation="0" />
-		<key row="793" value="0.000000" interpolation="1" />
-		<key row="802" value="1.000000" interpolation="0" />
-		<key row="827" value="0.000000" interpolation="1" />
-		<key row="836" value="1.000000" interpolation="0" />
-		<key row="861" value="0.000000" interpolation="1" />
-		<key row="870" value="1.000000" interpolation="0" />
-		<key row="894" value="0.000000" interpolation="1" />
-		<key row="903" value="1.000000" interpolation="0" />
-		<key row="927" value="0.000000" interpolation="1" />
-		<key row="936" value="1.000000" interpolation="0" />
-		<key row="963" value="0.000000" interpolation="1" />
-		<key row="972" value="1.000000" interpolation="0" />
-	</track>
-	<track name="scene5:cabbage.x" folded="0" muteKeyCount="0"
-color="ffb27474">
-		<key row="659" value="0.000000" interpolation="0" />
-		<key row="692" value="0.200000" interpolation="0" />
-		<key row="727" value="0.500000" interpolation="0" />
-		<key row="759" value="5.000000" interpolation="0" />
-		<key row="793" value="3.200002" interpolation="0" />
-		<key row="827" value="2.600002" interpolation="0" />
-		<key row="850" value="0.000000" interpolation="0" />
-		<key row="861" value="2.000000" interpolation="0" />
-		<key row="894" value="20.000000" interpolation="0" />
-		<key row="927" value="2.500000" interpolation="0" />
-		<key row="963" value="-21.500000" interpolation="0" />
-	</track>
-	<track name="scene5:cabbage.y" folded="0" muteKeyCount="0"
-color="ffb28050">
-		<key row="659" value="0.000000" interpolation="0" />
-		<key row="692" value="0.200000" interpolation="0" />
-		<key row="727" value="1.200000" interpolation="0" />
-		<key row="759" value="-2.000000" interpolation="0" />
-		<key row="793" value="-2.699999" interpolation="0" />
-		<key row="827" value="-2.699999" interpolation="0" />
-		<key row="850" value="0.000000" interpolation="2" />
-		<key row="885" value="2.000000" interpolation="3" />
-		<key row="918" value="-2.000000" interpolation="1" />
-		<key row="984" value="6.000000" interpolation="1" />
-	</track>
-	<track name="scene5:cabbage.z" folded="0" muteKeyCount="0"
-color="ffa9b250">
-		<key row="659" value="0.000000" interpolation="0" />
-		<key row="692" value="2.000000" interpolation="0" />
-		<key row="727" value="5.000000" interpolation="0" />
-		<key row="759" value="0.000000" interpolation="0" />
-		<key row="793" value="-3.499999" interpolation="0" />
-		<key row="827" value="-3.499999" interpolation="0" />
-		<key row="850" value="5.000000" interpolation="0" />
-		<key row="861" value="0.000000" interpolation="0" />
-		<key row="894" value="-20.000000" interpolation="0" />
-		<key row="927" value="10.000000" interpolation="0" />
-		<key row="963" value="0.000000" interpolation="0" />
 	</track>
 	<track name="scene4:rotation.x" folded="0" muteKeyCount="0"
 color="ff60b250">
@@ -581,6 +510,88 @@ color="ff4f71b2">
 		<key row="80" value="0.000000" interpolation="0" />
 		<key row="82" value="0.600000" interpolation="0" />
 		<key row="85" value="0.300000" interpolation="0" />
+	</track>
+	<track name="scene5:impulse" folded="0" muteKeyCount="0"
+color="ffb25091">
+		<key row="659" value="0.000000" interpolation="1" />
+		<key row="668" value="1.000000" interpolation="0" />
+		<key row="692" value="0.000000" interpolation="1" />
+		<key row="701" value="1.000000" interpolation="0" />
+		<key row="727" value="0.000000" interpolation="1" />
+		<key row="736" value="1.000000" interpolation="0" />
+		<key row="759" value="0.000000" interpolation="1" />
+		<key row="768" value="1.000000" interpolation="0" />
+		<key row="793" value="0.000000" interpolation="1" />
+		<key row="802" value="1.000000" interpolation="0" />
+		<key row="827" value="0.000000" interpolation="1" />
+		<key row="836" value="1.000000" interpolation="0" />
+		<key row="861" value="0.000000" interpolation="1" />
+		<key row="870" value="1.000000" interpolation="0" />
+		<key row="894" value="0.000000" interpolation="1" />
+		<key row="903" value="1.000000" interpolation="0" />
+		<key row="927" value="0.000000" interpolation="1" />
+		<key row="936" value="1.000000" interpolation="0" />
+		<key row="963" value="0.000000" interpolation="1" />
+		<key row="972" value="1.000000" interpolation="0" />
+	</track>
+	<track name="scene5:cabbage.x" folded="0" muteKeyCount="0"
+color="ffb27474">
+		<key row="659" value="0.000000" interpolation="0" />
+		<key row="692" value="0.200000" interpolation="0" />
+		<key row="727" value="0.500000" interpolation="0" />
+		<key row="759" value="5.000000" interpolation="0" />
+		<key row="793" value="3.200002" interpolation="0" />
+		<key row="827" value="2.600002" interpolation="0" />
+		<key row="850" value="0.000000" interpolation="0" />
+		<key row="861" value="2.000000" interpolation="0" />
+		<key row="894" value="20.000000" interpolation="0" />
+		<key row="927" value="2.500000" interpolation="0" />
+		<key row="963" value="-21.500000" interpolation="0" />
+	</track>
+	<track name="scene5:cabbage.y" folded="0" muteKeyCount="0"
+color="ffb28050">
+		<key row="659" value="0.000000" interpolation="0" />
+		<key row="692" value="0.200000" interpolation="0" />
+		<key row="727" value="1.200000" interpolation="0" />
+		<key row="759" value="-2.000000" interpolation="0" />
+		<key row="793" value="-2.699999" interpolation="0" />
+		<key row="827" value="-2.699999" interpolation="0" />
+		<key row="850" value="0.000000" interpolation="2" />
+		<key row="885" value="2.000000" interpolation="3" />
+		<key row="918" value="-2.000000" interpolation="1" />
+		<key row="984" value="6.000000" interpolation="1" />
+	</track>
+	<track name="scene5:cabbage.z" folded="0" muteKeyCount="0"
+color="ffa9b250">
+		<key row="659" value="0.000000" interpolation="0" />
+		<key row="692" value="2.000000" interpolation="0" />
+		<key row="727" value="5.000000" interpolation="0" />
+		<key row="759" value="0.000000" interpolation="0" />
+		<key row="793" value="-3.499999" interpolation="0" />
+		<key row="827" value="-3.499999" interpolation="0" />
+		<key row="850" value="5.000000" interpolation="0" />
+		<key row="861" value="0.000000" interpolation="0" />
+		<key row="894" value="-20.000000" interpolation="0" />
+		<key row="927" value="10.000000" interpolation="0" />
+		<key row="963" value="0.000000" interpolation="0" />
+	</track>
+	<track name="scene4:spineDensity.x" folded="0" muteKeyCount="0"
+color="ffb25091">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="312" value="600.000000" interpolation="1" />
+		<key row="380" value="35.000000" interpolation="0" />
+	</track>
+	<track name="scene4:spineDensity.y" folded="0" muteKeyCount="0"
+color="ffb27474">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="312" value="600.000000" interpolation="1" />
+		<key row="380" value="35.000000" interpolation="0" />
+	</track>
+	<track name="scene4:spineDensity.z" folded="0" muteKeyCount="0"
+color="ffb28050">
+		<key row="0" value="0.000000" interpolation="0" />
+		<key row="312" value="600.000000" interpolation="1" />
+		<key row="380" value="35.000000" interpolation="0" />
 	</track>
 </tracks>
 	</rootElement>
