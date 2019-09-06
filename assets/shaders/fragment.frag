@@ -21,15 +21,17 @@ uniform vec3 scene1Vector;
 uniform vec3 scene2Rotation;
 uniform vec3 scene2Position;
 
-uniform vec3 scene3OrbPosition;
-
-uniform vec3 scene4Rotation;
+uniform vec3 scene4Vector;
 
 uniform float scene5Impulse; 
 uniform vec3 scene5Cabbage; 
 
 uniform sampler2D nokilonkka;
 uniform sampler2D bogdan;
+uniform sampler2D logo;
+uniform sampler2D hypnoscan;
+uniform sampler2D music;
+uniform sampler2D code;
 
 in float[12] sines;
 in float[12] coses;
@@ -75,7 +77,6 @@ struct entity {
     float dist;
     vec3 point;
     bool needNormals;
-
     material material;
 };
 
@@ -583,8 +584,7 @@ entity mTerrain(vec3 path, vec3 par, material material) {
     entity m;
     float s = 1.0;
     vec3Tuple p1 = repeat(path, vec3(s * 2.5, 0.0, s * 2.5));
-    //p1 = path;
-    float a = length(scene3OrbPosition.xz - p1.second.xz);
+    float a = length(p1.second.xz);
     float b = (1.0 - smoothstep(-4.0, 10.0, a)) * 15.0;
     m = mBox(p1.first, vec3(s, s + b, s), 0.05, material);
     
@@ -597,23 +597,12 @@ entity mFractal(vec3 path, int iter, float s, float o, material material) {
     float scale = s;
     float offset = o;
     for(int i = 1; i <= iter; i++) {
-
-        //p1 = boxFold(p1, vec3(2.0, 2.0, 2.0));
-        //p1 = sierpinskiFold(p1);
         p1 = sphereFold(p1, 0.01, 1.8);
-        //p1 = mengerFold(p1);
-        //p1 = absFold(p1, vec3(1.2, 1.2, 1.2));
-        //p1 = planeFold(p1, normalize(vec3(1.0, 1.0, 1.0)), 0.5);
-        //p1 = rotZ(p1, time);
-        //p1 = rotY(rotZ(rotX(p1, 2.2), 0.4), 0.5);
         p1 = translate(p1, vec3(1.0, 1.0, 1.0));
         p1 *= scale - offset * (scale - 1.0);
        
     }
-
     m = mBox(p1, vec3(1.0, 1.0, 1.0), 0.0, material);
-    //this makes further objects darker
-    //m.dist *= pow(scale, -float(iter));
     return m;
 }
 
@@ -647,21 +636,10 @@ entity mTorusFractal(vec3 path, int iter, float scale, float offset, material ma
     entity m;
     vec3 p1 = path;
     for(int i = 1; i <= iter; i++) {
-
         p1 = boxFold(opTwist(p1, 0.02), vec3((movementsize * sin(time*movementspeed)) + 0.5 * 4.0));
-        //p1 = sphereFold(p1, 1.6, 1.9);
-        //p1 = randomFold(p1, vec3(0.0, 0.0, 1.0));
         p1 = rotY(rotX(rotZ(p1, i * 0.7), i *  0.5), i * 1.2);
-        //p1 = translate(p1, vec3(sin(time) * 6.0, 0.0, 0.0));
-       
-        //p1 *= scale - offset * (scale - 1.0);
-
     }
-
     m = mTorus(rotZ(opTwist(p1, 0.1), 0.0), vec2(2.5, 0.5),  material);
-    //m.dist = opOnion(m.dist, 0.2);
-    //this makes further objects darker
-    //m.dist += pow(scale, -float(iter));
     return m;
 }
 
@@ -669,16 +647,11 @@ entity mTangleSphere(vec3 path, int iter, float sphereR, float smoothFactor, mat
     entity m;
     vec3 p1 = path;
     for(int i = 1; i <= iter; i++) {
-
         p1 = boxFold(opTwist(p1, 0.00), vec3(4.5));
-        //p1 = sphereFold(p1, 1.6, 1.9);
-        //p1 = randomFold(p1, vec3(0.0, 0.0, 1.0));
         p1 = rotY(rotX(rotZ(p1,  5.7),  2.1),  1.2);
-        //p1 = translate(p1, vec3(sin(time) * 6.0, 0.0, 0.0));
     }
 
     float dTorus = sdTorus(p1, vec3(0.0), vec2(2.5, 1.5));
-    //float dSphere = sdSphere(path, vec3(0.0), sphereR);
     float dSphere = sdBox(path, vec3(0.0), vec3(sphereR), 0.2);
     m.dist = opSmoothUnion(dTorus, dSphere, smoothFactor);
     m.point = path;
@@ -698,7 +671,6 @@ entity scene(vec3 path)
     int a = int(act);
     if(a == 1) {
         vec2 uv = (gl_FragCoord.xy / resolution.xy) * 2.0 - 1.0;
-        //vec3 rPath = rotY(rotX(path, sin(uv.x + scene1Vector.x)), cos(uv.y + scene1Vector.y));
         vec3 rPath = rotY(rotX(path, uv.x + scene1Vector.x), uv.y + scene1Vector.y);
         material skullMat = material(
             vec3(0.6, 0.6, 0.6),
@@ -723,7 +695,63 @@ entity scene(vec3 path)
 
         entity skull = mBox(rPath, vec3(1.0), 0.0, skullMat);
         skull.needNormals = true;
-        return skull;
+
+        material codeMat = material(
+            vec3(1.0, 1.0, 1.0),
+            1.0,
+
+            vec3(1.0, 1.0, 1.0),
+            1.0,
+
+            vec3(1.0, 1.0, 1.0),
+            0.0,
+            0.0,
+
+            1.0,
+            false,
+            textureOptions(
+                6,
+                vec3(0.5, scene4Vector.x, 0.0),
+                vec3(1.5, -5.0, 0.0),
+                false
+            )
+        );
+        entity codePlane = mBox(
+            rot(translate(path, vec3(0.0, 0.0, -2.0) * scene4Vector.y), vec3(0.0, 0.2, -0.1)),
+            vec3(0.8, 6.0, 0.1),
+            0.0,
+            codeMat
+        );
+        codePlane.needNormals = true;
+
+        material musicMat = material(
+            vec3(1.0, 1.0, 1.0),
+            1.0,
+
+            vec3(1.0, 1.0, 1.0),
+            1.0,
+
+            vec3(1.0, 1.0, 1.0),
+            0.0,
+            0.0,
+
+            1.0,
+            false,
+            textureOptions(
+                7,
+                vec3(0.5, -scene4Vector.x, 0.0),
+                vec3(-1.5, 5.0, 0.0),
+                false
+            )
+        );
+        entity musicPlane = mBox(
+            rot(translate(path, vec3(-1.0, 0.0, 2.0) * scene4Vector.y), vec3(0.0, 2.7, 0.0)),
+            vec3(0.8, 6.0, 0.1),
+            0.0,
+            musicMat
+        );
+        musicPlane.needNormals = true;
+        return opUnion(opUnion(skull, codePlane), musicPlane);
     }
     else if(a == 2) {
         material rotoMat = material(
@@ -752,37 +780,6 @@ entity scene(vec3 path)
         );
         roto.needNormals = true;
         return roto;
-    }
-    else if(a == 3) {
-        material terrainMat = material(
-            vec3(0.337, 0.54, 0.443),
-            1.0,
-
-            vec3(0.6, 0.6, 0.6),
-            0.2,
-
-            vec3(1.0, 1.0, 1.0),
-            1.0,
-            1.2,
-
-            10.0,
-            false,
-            textureOptions(
-                0,
-                vec3(3.5),
-                vec3(3.5),
-                false
-            )
-        );
-        float a = distance(path.xz, scene3OrbPosition.xz);
-        float b = smoothstep(5.0, 25.0, a);
-        entity terrain = mTerrain(
-            path,
-            vec3(sin(time), b, 0.5),
-            terrainMat
-        );
-        terrain.needNormals = true;
-        return terrain;
     }
     else if(a == 4) {
          material roM = material(
@@ -826,7 +823,7 @@ entity scene(vec3 path)
                 false
             )
         );
-        vec3 crossPoint = rot(path, scene4Rotation);
+        vec3 crossPoint = rot(translate(path, vec3(-17.0, 9.0, 0.0)), vec3(time));
         
         entity roto = mCross(
             crossPoint,
@@ -851,7 +848,63 @@ entity scene(vec3 path)
         impaler.needNormals = true;
         entity rotoImpaler = opUnion(roto, impaler);
 
-        return rotoImpaler;
+        material logoM = material(
+            vec3(1.0, 1.0, 1.0),
+            1.0,
+
+            vec3(1.0, 1.0, 1.0),
+            1.0,
+
+            vec3(1.0, 1.0, 1.0),
+            0.0,
+            0.0,
+
+            1.0,
+            false,
+            textureOptions(
+                4,
+                vec3(0.5, 0.5, 0.0),
+                vec3(-7.5, 22.0, 0.0),
+                false
+            )
+        );
+        entity logoPlane = mBox(
+            rot(translate(path, vec3(8.0 * scene4Vector.x, 5.0 + sinc(scene4Vector.y, 10.0) * 17.0, 0.0)), vec3(1.0, 0.0, PI / -2.0)),
+            vec3(3.5, 11.0, 0.1),
+            0.0,
+            logoM
+        );
+        logoPlane.needNormals = true;
+        
+        material hypnoscanM = material(
+            vec3(1.0, 1.0, 1.0),
+            1.0,
+
+            vec3(1.0, 1.0, 1.0),
+            1.0,
+
+            vec3(1.0, 1.0, 1.0),
+            0.0,
+            0.0,
+
+            1.0,
+            false,
+            textureOptions(
+                5,
+                vec3(0.5, 0.5, 0.0),
+                vec3(-6.5, 12.0, 0.0),
+                false
+            )
+        );
+        entity hypnoscanPlane = mBox(
+            rot(translate(path, vec3(10.0 * scene4Vector.x, -4.0 -sinc(scene4Vector.y, 10.0) * 17.0, 5.0)), vec3(0.2, 0.0, PI / -2.0)),
+            vec3(3.5, 6.0, 0.1),
+            0.0,
+            hypnoscanM
+        );
+        hypnoscanPlane.needNormals = true;
+        
+        return opUnion(opUnion(rotoImpaler, logoPlane), hypnoscanPlane);
     }
     else if(a == 5) {
          material tunnelMat = material(
@@ -1001,7 +1054,6 @@ hit raymarch(vec3 rayOrigin, vec3 rayDirection) {
                     scene(h.point + eps.yyx).dist - h.entity.dist
                 ));
             }
-            
             break;
         }
         h.dist += h.entity.dist;
@@ -1109,7 +1161,6 @@ vec4 background(vec2 uv) {
         r.w = 0.1;
     }
     else if(a == 3) {
-        //r.xyz = mix(vec3(0.0, 0.0, 0.0), vec3(0.11, 0.09, 0.28), sin(time));
         r.w = 0.1;
     }
     else if(a == 4) {
@@ -1118,7 +1169,8 @@ vec4 background(vec2 uv) {
         r.xyz += plot(noise(uv.y * 0.01, 1.06, 5.8, time2 * 0.76)  * 3.4, 1.90, uv) * vec3(0.2, 0.9, 0.1);
         r.xyz += plot(noise(uv.y * 0.01, 1.96, 7.8, time2 * 0.5)  * 3.4, 1.93, uv) * vec3(0.8, 0.2, 0.8);
         r.xyz *= length(r * 0.8);  
-        r.w = 0.1; 
+        r.w = 10.1; 
+        r = vec4(0.0, 0.0, 0.0, 10.0);
     }
     return r;
 }
@@ -1126,11 +1178,6 @@ vec4 background(vec2 uv) {
 vec3 generateTexture(int index, vec3 point, vec3 offset, vec3 scale) {
     vec3 r = vec3(1.0);
     switch(index) {
-        case 1: {
-            vec2 uv = planarMapping(point);
-            r = vec3(1.0) * fbm3D(vec3(uv, 0.0), offset.x, offset.y, int(scale.x), scale.y);
-            break;
-        }
         case 2: {
             vec3 rp = vec3((point.x / scale.x) + offset.x, (point.y / scale.y) + offset.y, (point.z / scale.z) + offset.z);
             r = textureCube(nokilonkka, rp, vec3(0.0, 0.0, 0.1)).xyz;
@@ -1140,11 +1187,28 @@ vec3 generateTexture(int index, vec3 point, vec3 offset, vec3 scale) {
             vec3 rp = vec3((point.x / scale.x) + offset.x, (point.y / scale.y) + offset.y, (point.z / scale.z) + offset.z);
             r = textureCube(bogdan, rp, vec3(1.0, 1.0, 1.0)).xyz;
             break;
-
         }
-
-    } 
-    
+        case 4: {
+            vec3 rp = vec3((point.x / scale.x) + offset.x, (point.y / scale.y) + offset.y, (point.z / scale.z) + offset.z);
+            r = textureCube(logo, rp, vec3(0.0, 0.0, 1.0)).xyz;
+            break;
+        }
+        case 5: {
+            vec3 rp = vec3((point.x / scale.x) + offset.x, (point.y / scale.y) + offset.y, (point.z / scale.z) + offset.z);
+            r = textureCube(hypnoscan, rp, vec3(0.0, 0.0, 1.0)).xyz;
+            break;
+        }
+        case 6: {
+            vec3 rp = vec3((point.x / scale.x) + offset.x, (point.y / scale.y) + offset.y, (point.z / scale.z) + offset.z);
+            r = textureCube(code, rp, vec3(0.0, 0.0, 1.0)).xyz;
+            break;
+        }
+        case 7: {
+            vec3 rp = vec3((point.x / scale.x) + offset.x, (point.y / scale.y) + offset.y, (point.z / scale.z) + offset.z);
+            r = textureCube(music, rp, vec3(0.0, 0.0, 1.0)).xyz;
+            break;
+        }
+    }  
     return r;
 }
 

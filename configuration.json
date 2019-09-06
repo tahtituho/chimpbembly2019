@@ -35,6 +35,26 @@
             "type": "texture",
             "name": "bogdan",
             "file": "assets\\textures\\bogdan.png"
+        },
+        {
+            "type": "texture",
+            "name": "logo",
+            "file": "assets\\textures\\logo.png"
+        },
+        {
+            "type": "texture",
+            "name": "hypnoscan",
+            "file": "assets\\textures\\hypnoscan.png"
+        },
+        {
+            "type": "texture",
+            "name": "music",
+            "file": "assets\\textures\\music.png"
+        },
+        {
+            "type": "texture",
+            "name": "code",
+            "file": "assets\\textures\\code.png"
         }
     ],
     "tracks": [
@@ -118,15 +138,8 @@
         {
             "type": "float3",
             "name": {
-                "track": "scene3:orbPosition",
-                "variable": "scene3OrbPosition"
-            }
-        },
-        {
-            "type": "float3",
-            "name": {
-                "track": "scene4:rotation",
-                "variable": "scene4Rotation"
+                "track": "scene4:vector",
+                "variable": "scene4Vector"
             }
         },
         {
